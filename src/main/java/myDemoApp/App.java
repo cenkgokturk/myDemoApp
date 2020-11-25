@@ -5,21 +5,33 @@ package myDemoApp;
 import java.util.ArrayList;
 
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+
+    //Search two strings in an arraylist 
+    //return true if both of them appear in the arraylist 
+    //else return false
+    public static boolean searchString(ArrayList<String> array, String firstString, String secondString) {
+
+        boolean isFirstPresent = false;
+        boolean isSecondPresent = false;
+
+        if (array == null) return false;
+
+        for (String arrayElement : array){
+            if (arrayElement.contains(firstString)){
+                isFirstPresent = true;
+            }
+            if (arrayElement.contains(secondString)){
+                isSecondPresent = true;
+              }
+        }
+
+        if(isFirstPresent == true && isSecondPresent == true){
+            return true;
+        }else{
+            return false;
+        }
     }
 
-    public static boolean search(ArrayList<Integer> array, int e) {
-        System.out.println("inside search");
-        if (array == null) return false;
-  
-        for (int elt : array) {
-          if (elt == e) return true;
-        }
-        return false;
-      }
-
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
     }
 }

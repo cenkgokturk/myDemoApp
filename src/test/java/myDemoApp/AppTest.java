@@ -6,37 +6,54 @@ package myDemoApp;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
 class AppTest {
-    @Test void appHasAGreeting() {
-        App classUnderTest = new App();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    }
 
-    @Test
-   public void testFound() {
-      ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-      assertTrue(App.search(array, 4));
-    }
+  //check if both strings are present in the arraylist
+  @Test
+  public void testFound() {
+     ArrayList<String> array = new ArrayList<>(Arrays.asList("1", "2", "3", "4"));
+     assertTrue(App.searchString(array, "1", "2"));
+   }
 
-    @Test
-    public void testNotFound() {
-      ArrayList<Integer> array = new ArrayList<>(Arrays.asList(1, 2, 3, 4));
-      assertFalse(App.search(array, 5));
-    }
+   //check if only one of the elements is in the arraylist while the second is not
+   @Test
+   public void testNotFound() {
+     ArrayList<String> array = new ArrayList<>(Arrays.asList("a", "b", "c"));
+     assertFalse(App.searchString(array, "a", "ThisIsNotPresent"));
+   }
 
-    @Test
-    public void testEmptyArray() {
-      ArrayList<Integer> array = new ArrayList<>();
-      assertFalse(App.search(array, 1));
-    }
+   //check if neither of the given strings are present
+   @Test
+   public void testNotFoundTwoStrings() {
+     ArrayList<String> array = new ArrayList<>(Arrays.asList("first", "second", "third", "forth", "fifth"));
+     assertFalse(App.searchString(array, "sixth", "seventh"));
+   }
 
-    @Test
-    public void testNull() {
-      assertFalse(App.search(null, 1));
-    }
+   //check what happens when an array has only one element but there are not given strings
+   @Test
+   public void testArrayWithLimitedNumbers() {
+     ArrayList<String> array = new ArrayList<>(Arrays.asList("onlyElement"));
+     assertFalse(App.searchString(array, "onlyElement", "thisCannotBeAnElement"));
+   }
+
+   //check if the given array is empty
+   @Test
+   public void testEmptyArray() {
+     ArrayList<String> array = new ArrayList<>();
+     assertFalse(App.searchString(array, "ABCD", "EFGH"));
+   }
+
+   //check if a null is given instead of an arraylist
+   @Test
+   public void testNull() {
+     assertFalse(App.searchString(null, "FirstString", "SecondString"));
+   }
+
+
 
 }
