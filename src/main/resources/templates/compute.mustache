@@ -1,12 +1,19 @@
 <title>My application</title>
   <h1>Double String Search</h1>
+
+    <p>First text box, named All Strings, takes Strings (in seperate lines) to insert them to an arraylist</p>
+    <p>In order to search for two Strings in the arraylist created with the first textbox, </p>
+    <p>second textbox takes the first String in the first line and the second String in the second line </p>
+    <p>Result will be true if and only if both Strings appear in the array of words entered with the first textbox </p>
+
     Result is {{result}}
 
 
   <form action="compute" method="post">
         <label for="input1">All Strings</label>
-        <label for="input2">Strings to be searched for</label>
         <textarea name="input1" rows="10" cols="30"></textarea>
+
+        <label for="input2">Strings to be searched for</label>
         <textarea name="input2" rows="10" cols="30"></textarea>
         <br>
         <input type="submit">
